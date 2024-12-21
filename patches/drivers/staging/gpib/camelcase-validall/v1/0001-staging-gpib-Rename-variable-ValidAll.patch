@@ -1,0 +1,173 @@
+From a69cbd35b6578ed76b38a06e98bed7753a525f12 Mon Sep 17 00:00:00 2001
+From: Antonio Riccio <linux@ariccio.me>
+Date: Sat, 21 Dec 2024 20:42:18 +0100
+Subject: [PATCH] staging: gpib: Rename variable ValidAll
+
+Adhere to Linux kernel coding style.
+
+Reported by checkpatch:
+
+CHECK: Avoid CamelCase: <ValidALL>
++       int status = ValidALL;
+
+Signed-off-by: Antonio Riccio <linux@ariccio.me>
+---
+ drivers/staging/gpib/agilent_82357a/agilent_82357a.c | 2 +-
+ drivers/staging/gpib/cb7210/cb7210.c                 | 2 +-
+ drivers/staging/gpib/eastwood/fluke_gpib.c           | 2 +-
+ drivers/staging/gpib/fmh_gpib/fmh_gpib.c             | 2 +-
+ drivers/staging/gpib/gpio/gpib_bitbang.c             | 2 +-
+ drivers/staging/gpib/ines/ines_gpib.c                | 2 +-
+ drivers/staging/gpib/lpvo_usb_gpib/lpvo_usb_gpib.c   | 2 +-
+ drivers/staging/gpib/ni_usb/ni_usb_gpib.c            | 2 +-
+ drivers/staging/gpib/tms9914/tms9914.c               | 2 +-
+ drivers/staging/gpib/tnt4882/tnt4882_gpib.c          | 2 +-
+ drivers/staging/gpib/uapi/gpib_user.h                | 2 +-
+ 11 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/drivers/staging/gpib/agilent_82357a/agilent_82357a.c b/drivers/staging/gpib/agilent_82357a/agilent_82357a.c
+index bf05fb4a736b..9f13cff3181a 100644
+--- a/drivers/staging/gpib/agilent_82357a/agilent_82357a.c
++++ b/drivers/staging/gpib/agilent_82357a/agilent_82357a.c
+@@ -999,7 +999,7 @@ static int agilent_82357a_line_status(const gpib_board_t *board)
+ 	struct usb_device *usb_dev = interface_to_usbdev(a_priv->bus_interface);
+ 	struct agilent_82357a_register_pairlet bus_status;
+ 	int retval;
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 
+ 	bus_status.address = BSR;
+ 	retval = agilent_82357a_read_registers(a_priv, &bus_status, 1, 0);
+diff --git a/drivers/staging/gpib/cb7210/cb7210.c b/drivers/staging/gpib/cb7210/cb7210.c
+index 63df7f3eb3f3..a72381ce996e 100644
+--- a/drivers/staging/gpib/cb7210/cb7210.c
++++ b/drivers/staging/gpib/cb7210/cb7210.c
+@@ -377,7 +377,7 @@ int cb7210_accel_write(gpib_board_t *board, uint8_t *buffer, size_t length, int
+ 
+ int cb7210_line_status(const gpib_board_t *board)
+ {
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 	int bsr_bits;
+ 	struct cb7210_priv *cb_priv;
+ 	struct nec7210_priv *nec_priv;
+diff --git a/drivers/staging/gpib/eastwood/fluke_gpib.c b/drivers/staging/gpib/eastwood/fluke_gpib.c
+index 3f938ab0c84d..6113dbb55d29 100644
+--- a/drivers/staging/gpib/eastwood/fluke_gpib.c
++++ b/drivers/staging/gpib/eastwood/fluke_gpib.c
+@@ -191,7 +191,7 @@ static void fluke_return_to_local(gpib_board_t *board)
+ 
+ static int fluke_line_status(const gpib_board_t *board)
+ {
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 	int bsr_bits;
+ 	struct fluke_priv *e_priv;
+ 	struct nec7210_priv *nec_priv;
+diff --git a/drivers/staging/gpib/fmh_gpib/fmh_gpib.c b/drivers/staging/gpib/fmh_gpib/fmh_gpib.c
+index 62791db1c34a..07dd3882bf5f 100644
+--- a/drivers/staging/gpib/fmh_gpib/fmh_gpib.c
++++ b/drivers/staging/gpib/fmh_gpib/fmh_gpib.c
+@@ -223,7 +223,7 @@ static void fmh_gpib_return_to_local(gpib_board_t *board)
+ 
+ static int fmh_gpib_line_status(const gpib_board_t *board)
+ {
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 	int bsr_bits;
+ 	struct fmh_priv *e_priv;
+ 	struct nec7210_priv *nec_priv;
+diff --git a/drivers/staging/gpib/gpio/gpib_bitbang.c b/drivers/staging/gpib/gpio/gpib_bitbang.c
+index a2d562cbd65b..3b7a3b7995f6 100644
+--- a/drivers/staging/gpib/gpio/gpib_bitbang.c
++++ b/drivers/staging/gpib/gpio/gpib_bitbang.c
+@@ -1035,7 +1035,7 @@ static void bb_return_to_local(gpib_board_t *board)
+ 
+ static int bb_line_status(const gpib_board_t *board)
+ {
+-	int line_status = ValidALL;
++	int line_status = VALIDALL;
+ 
+ //	  dbg_printk(1,"\n");
+ 
+diff --git a/drivers/staging/gpib/ines/ines_gpib.c b/drivers/staging/gpib/ines/ines_gpib.c
+index 9d8387c3bf01..b1a8957eecb9 100644
+--- a/drivers/staging/gpib/ines/ines_gpib.c
++++ b/drivers/staging/gpib/ines/ines_gpib.c
+@@ -23,7 +23,7 @@ MODULE_DESCRIPTION("GPIB driver for Ines iGPIB 72010");
+ 
+ int ines_line_status(const gpib_board_t *board)
+ {
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 	int bcm_bits;
+ 	struct ines_priv *ines_priv;
+ 	struct nec7210_priv *nec_priv;
+diff --git a/drivers/staging/gpib/lpvo_usb_gpib/lpvo_usb_gpib.c b/drivers/staging/gpib/lpvo_usb_gpib/lpvo_usb_gpib.c
+index 1a8eb3bfb61c..d0692fdae9b2 100644
+--- a/drivers/staging/gpib/lpvo_usb_gpib/lpvo_usb_gpib.c
++++ b/drivers/staging/gpib/lpvo_usb_gpib/lpvo_usb_gpib.c
+@@ -702,7 +702,7 @@ static void usb_gpib_interface_clear(gpib_board_t *board, int assert)
+ static int usb_gpib_line_status(const gpib_board_t *board)
+ {
+ 	int buffer;
+-	int line_status = ValidALL;   /* all lines will be read */
++	int line_status = VALIDALL;   /* all lines will be read */
+ 	struct list_head *p, *q;
+ 	WQT *item;
+ 	unsigned long flags;
+diff --git a/drivers/staging/gpib/ni_usb/ni_usb_gpib.c b/drivers/staging/gpib/ni_usb/ni_usb_gpib.c
+index 70b8b305e13b..60c756fe744c 100644
+--- a/drivers/staging/gpib/ni_usb/ni_usb_gpib.c
++++ b/drivers/staging/gpib/ni_usb/ni_usb_gpib.c
+@@ -1483,7 +1483,7 @@ static int ni_usb_line_status(const gpib_board_t *board)
+ 	int bytes_written = 0, bytes_read = 0;
+ 	int i = 0;
+ 	unsigned int bsr_bits;
+-	int line_status = ValidALL;
++	int line_status = VALIDALL;
+ 	// NI windows driver reads 0xd(HSSEL), 0xc (ARD0), 0x1f (BSR)
+ 
+ 	out_data = kmalloc(out_data_length, GFP_KERNEL);
+diff --git a/drivers/staging/gpib/tms9914/tms9914.c b/drivers/staging/gpib/tms9914/tms9914.c
+index 152b243b845b..f7bda53823dd 100644
+--- a/drivers/staging/gpib/tms9914/tms9914.c
++++ b/drivers/staging/gpib/tms9914/tms9914.c
+@@ -390,7 +390,7 @@ static unsigned int update_status_nolock(gpib_board_t *board, struct tms9914_pri
+ int tms9914_line_status(const gpib_board_t *board, struct tms9914_priv *priv)
+ {
+ 	int bsr_bits;
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 
+ 	bsr_bits = read_byte(priv, BSR);
+ 
+diff --git a/drivers/staging/gpib/tnt4882/tnt4882_gpib.c b/drivers/staging/gpib/tnt4882/tnt4882_gpib.c
+index e49a952fa0d8..f36c31c1ca28 100644
+--- a/drivers/staging/gpib/tnt4882/tnt4882_gpib.c
++++ b/drivers/staging/gpib/tnt4882/tnt4882_gpib.c
+@@ -194,7 +194,7 @@ MODULE_DESCRIPTION("GPIB driver for National Instruments boards using tnt4882 or
+ 
+ int tnt4882_line_status(const gpib_board_t *board)
+ {
+-	int status = ValidALL;
++	int status = VALIDALL;
+ 	int bcsr_bits;
+ 	struct tnt4882_priv *tnt_priv;
+ 
+diff --git a/drivers/staging/gpib/uapi/gpib_user.h b/drivers/staging/gpib/uapi/gpib_user.h
+index 0896a55a758f..34392e076163 100644
+--- a/drivers/staging/gpib/uapi/gpib_user.h
++++ b/drivers/staging/gpib/uapi/gpib_user.h
+@@ -114,7 +114,7 @@ enum bus_control_line {
+ 	ValidSRQ = 0x20,
+ 	ValidATN = 0x40,
+ 	ValidEOI = 0x80,
+-	ValidALL = 0xff,
++	VALIDALL = 0xff,
+ 	BusDAV = 0x0100,		/* DAV	line status bit */
+ 	BusNDAC = 0x0200,		/* NDAC line status bit */
+ 	BusNRFD = 0x0400,		/* NRFD line status bit */
+-- 
+2.43.0
+
