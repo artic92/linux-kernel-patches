@@ -1,0 +1,34 @@
+From a74b830e9d7a7d4d32bf4a54b637cbadc8b78cdc Mon Sep 17 00:00:00 2001
+From: Antonio Riccio <linux@ariccio.me>
+Date: Thu, 26 Dec 2024 11:06:48 +0100
+Subject: [PATCH] staging: vme_user: vme_tsi148.c: avoid parenthesis line
+ ending
+
+Adhere to Linux Kernel coding style.
+
+Reported by checkpatch
+
+CHECK: Lines should not end with a '('
+
+Signed-off-by: Antonio Riccio <linux@ariccio.me>
+---
+ drivers/staging/vme_user/vme_tsi148.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/drivers/staging/vme_user/vme_tsi148.c b/drivers/staging/vme_user/vme_tsi148.c
+index 31a44025e08f..733594dde9ae 100644
+--- a/drivers/staging/vme_user/vme_tsi148.c
++++ b/drivers/staging/vme_user/vme_tsi148.c
+@@ -761,8 +761,7 @@ static int tsi148_alloc_resource(struct vme_master_resource *image,
+ 		goto err_resource;
+ 	}
+ 
+-	image->kern_base = ioremap(
+-		image->bus_resource.start, size);
++	image->kern_base = ioremap(image->bus_resource.start, size);
+ 	if (!image->kern_base) {
+ 		dev_err(tsi148_bridge->parent, "Failed to remap resource\n");
+ 		retval = -ENOMEM;
+-- 
+2.43.0
+
