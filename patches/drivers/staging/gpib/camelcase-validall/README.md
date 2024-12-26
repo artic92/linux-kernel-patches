@@ -9,7 +9,7 @@
 
 | Version | Summary                 | Status         | Major Changes                     |
 |---------|-------------------------|----------------|------------------------------------|
-| [v1](v1/cover-letter.md) | Initial submission      | TBD       | Basic functionality only.         |
+| [v1](v1/cover-letter.md) | Initial submission      | rejected       | Basic functionality only.         |
 
 ## Location
 
